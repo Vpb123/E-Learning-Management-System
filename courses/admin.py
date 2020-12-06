@@ -18,3 +18,4 @@ class CourseAdmin(admin.ModelAdmin):
     prepopulated_fields={'slug':('title',)}
     inlines=[ModuleInline]
     
+admin.site.index_template='memcache_status/admin_index.html'
