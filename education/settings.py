@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
     'memcache_status',
     'students.apps.StudentsConfig',
     'courses.apps.CoursesConfig',
@@ -42,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'embed_video',
     'rest_framework',
+    'chat',
+    
 ]
 
 MIDDLEWARE = [
@@ -57,6 +60,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'education.urls'
+ASGI_APPLICATION='education.routing.application'
 
 TEMPLATES = [
     {
