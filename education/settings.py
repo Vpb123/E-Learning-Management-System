@@ -83,7 +83,14 @@ WSGI_APPLICATION = 'education.wsgi.application'
 LOGIN_REDIRECT_URL = reverse_lazy('student_course_list')
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
+CHANNEL_LAYERS = {
+ 'default': {
+ 'BACKEND': 'channels_redis.core.RedisChannelLayer',
+ 'CONFIG': {
+ 'hosts': [('127.0.0.1', 6379)],
+ },
+ },
+}
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
