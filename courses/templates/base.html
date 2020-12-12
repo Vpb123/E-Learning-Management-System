@@ -4,29 +4,84 @@
 <head>
 <meta charset="utf-8"/>
 <title>{% block title %}Educa{% endblock %}</title>
-<link href="{% static 'css/base.css' %}" rel ="stylesheet">
+{% comment %} <link href="{% static 'css/base.css' %}" rel ="stylesheet"> {% endcomment %}
+<script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js'></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ <!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ {% comment %} <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script> {% endcomment %}
+    <!-- Compiled and minified JavaScript -->
+  {% block style %}{% endblock %} 
+<style>
+.a{
+  {% comment %} background-color:#039be5;
+  color:white; {% endcomment %}
+  text-shadow:1px 1px #0000;
+}
+
+
+.d{
+   text-shadow:1px 1px gray;
+   margin-left:5px;
+
+}
+ .container2 {
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin:10px 10px 0px auto;
+  width:40%;
+}
+.c2{
+  margin:10px auto 0px 10px;
+}
+
+</style>
 </head>
-<body>
-  <div id='header'>
-  <a href="/" class="logo">Educa</a>
-   <ul>
+<body class="container ">
+<div>
+  <nav class='red' >
+  <div class="nav-wrapper  " id='header'>
+   <a href="/" class="brand-logo ">E-Learning </a>
+  	<a href="#" class="sidenav-trigger" data-target="mobile-nav">
+			<i class="material-icons">menu</i></a>
+     <ul class="right hide-on-med-and-down">
+     <li><a href="/"><i class="large material-icons" style="position:center;">home</i></a><li>
      {% if request.user.is_authenticated %}
-     <li> <a href="{% url 'logout' %}">Sign Out</a></li>
+     {% block nav1 %}{% endblock %}
+     <li> <a href="{% url 'logout' %}"><i class="material-icons right-align">account_circle</i></a></li>
      {% else %}
      <li>
-       <a href="{% url "login" %}">Sign in</a>
+       <a href="{% url "login" %}"><i class="material-icons ">person_add</i></a>
      </li>
      {% endif %}
    </ul>
+   
+<ul class="sidenav" id="mobile-nav">
+{% block nav2 %}
+{% endblock %}
+ <li><a href="{% url "login" %}">Login</a><li>
+  <li> <a href="{% url 'logout' %}">Logout</a></li>
+</ul>
+
   </div>
+   </nav>
   <div class="content">
     {% block content %}
     {% endblock %}
-  </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/
-jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/
-jquery-ui.min.js"></script>
+</div>
+<div class='section'></div>
+</div>
+{% block script %} 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+{% endblock %}
+<script>
+$(document).ready(function(){
+ 		$('.sidenav').sidenav();
+ 	});</script>
 <script>
   $(document).ready(function(){
     {% block domready %}{% endblock %}
@@ -34,3 +89,5 @@ jquery-ui.min.js"></script>
 </script>
 </body>
 </html>
+
+
