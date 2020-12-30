@@ -58,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'courses.middleware.subdomain_course_middleware',
 ]
 
 ROOT_URLCONF = 'education.urls'
@@ -127,9 +128,7 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 CACHES={
@@ -138,17 +137,18 @@ CACHES={
         'LOCATION':'127.0.0.1:11211',
            }
 }
-
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # CACHE_MIDDLEWARE_ALIAS='default'
 # CACHE_MIDDLEWARE_SECONDS=60*15 
 # CACHE_MIDDLEWARE_KEY_PREFIX='educa'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-STATIC_ROOT= os.path.join(BASE_DIR,'staticfiles')
+# STATIC_ROOT= os.path.join(BASE_DIR,'staticfiles')
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-os.path.join(BASE_DIR, 'static'),
-)
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+# STATICFILES_DIRS = (
+# os.path.join(BASE_DIR, 'static'),
+# )
 
 MEDIA_URL='/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR, 'media/')
