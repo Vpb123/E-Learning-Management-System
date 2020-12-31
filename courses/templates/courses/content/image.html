@@ -1,5 +1,4 @@
-<div class='col l6 m6 s12'>
-<div class="card-image">
-<img  class=" responsive-img"  src="{{ item.file.url }}" alt="{{ item.title }}">
-</div>
+<div class="col-lg-6 mt-10 " style="margin-top:20px;">
+<h4 class='card-title' style="font-weight:bold;">{{ item.title|truncatechars:25 }}</h4>
+<img  class="img-fluid"   src="{{ item.file.url }}" alt="{{ item.title }}">
 </div>

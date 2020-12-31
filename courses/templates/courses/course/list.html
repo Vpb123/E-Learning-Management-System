@@ -7,8 +7,8 @@
  {% endif %}
 {% endblock %}
  {% block content %}
- <div style="margin:10px">
-   <h1>
+ <div class="jumbotron" >
+   <h1 class="display-4">
     {% if subject %}
     {{ subject.title }} courses
     {% else %}
@@ -16,23 +16,23 @@
     {% endif %}
     </h1>
  <div class="contents">
-    <h3>Subjects</h3>
-        <ul id="modules">
-            <li {% if not subject %}class="selected"{% endif %}>
+    <h3 class='lead' style="font-weight:bold;">Subjects</h3>
+            <div {% if not subject %}class="selected"{% endif %}>
             <a href="{% url "course_list" %}">All</a>
-            </li>
+            </div>
+ <div class="row">
  {% for s in subjects %}
-    <li {% if subject == s %}class="selected"{% endif %}>
-    <a href="{% url "course_list_subject" s.slug %}">
-    {{ s.title }}
-    <br><span>{{ s.total_courses }} courses</span>
-    </a>
-    </li>
- {% endfor %}
- </ul>
-
+    <div class='col-lg-3 col-md-4 col-sm-6 ' style="max-width: 20rem;" {% if subject == s %}class="selected"{% endif %}>
+    <div class='card bg-secondary mb-3 ' style=' border-bottom-left-radius:10px;'> <a class='card-header bg-dark text-white' style='border-top-right-radius:10px;'href="{% url "course_list_subject" s.slug %}">
+    {{ s.title }}</a>
+    <div class='card-body'>
+    <p class='card-text'>{{ s.total_courses }} courses</p>
+    </div></div>
+    </div>
+  {% endfor %}
+   <div>
  </div>
- <div class="module">
+ <div class="container-fluid">
     {% for course in courses %}
     {% with subject=course.subject %}
  <h3>

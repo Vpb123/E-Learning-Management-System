@@ -1,5 +1,7 @@
 {% load embed_video_tags %}
-<div class='col l6 m6 s12'><div class="video-container " style='margin:5px;'>
-{% video item.url "small" %}
+<div class="col-lg-6 " style="margin-top:20px;">
+<h4 class='card-title' style="font-weight:bold;">{{ item.title|truncatechars:25 }}</h4>
+<div class="embed-responsive embed-responsive-16by9">
+<div class="embed-responsive-item" >{% video item.url "small" %}</div>
 </div>
 </div>

@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
 {% block title %}Logged Out{% endblock %}
 {% block content %}
-<h1></h1>
-<div class="container">
-<h4>You have successfully logged out .<a href=" {% url 'login' %}">Login Again </a></h4>
+ <div class="alert alert-dismissible alert-primary ">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Logged Out!</strong> <a href="{% url 'login' %}" class="alert-link">Get a boom</a> and Login Again.
 </div>
 {% endblock %}
+
+
+
+<!-- Modal -->
