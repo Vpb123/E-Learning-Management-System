@@ -2,25 +2,128 @@
 {% block title %}My courses {% endblock %}
 
 {% block content %}
-<div class='module'>
-<h1> My courses</h1>
+<div class='jumbotron bg-light mt-3 ' style="margin:1rem;border-radius:30px; ">
+<h4 class="display-4 mb-2 text-dark" style="font-size:2rem;"> My courses</h4>
+<div class="table-responsive-sm">
+<table class="table table-hover ">
+  <thead>
+    <tr class="table-light">
+      <th scope="col">Course</th>
+      <th scope="col" colspan="2">Course Action</th>
+      <th scope="col">Modules</th>
+       <th scop="col">Content</th>
+    </tr>
+  </thead>
+  <tbody>
 {% for course in object_list %}
-<div class='course-info'>
-<h3>{{ course.title}}</h3>
-<p>
-<a href="{% url 'course_edit' course.id%}">Edit</a>
-<a href="{% url 'course_delete' course.id %}">Delete</a>
-<a href="{% url "course_module_update" course.id %}">Edit modules</a>
-{% if course.modules.count > 0 %}
- <a href="{% url "module_content_list" course.modules.first.id %}">
- Manage contents</a>
-{% endif %}
-The new link allows
-</p>
+ <tr class="table-light">
+  <th scope="row">{{ course.title}}</th>
+    <td> <a href="{% url 'course_edit' course.id%}">Edit</a></td>
+    <td> <a href="#" data-toggle="modal" data-target="#exampleModal1">Delete</a></td>
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Deleting {{course.title}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="{% url 'course_delete' course.id %}" method="post">
+           {% csrf_token %}
+           <p>Are you sure you want to delete "{{ course.title }}"?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Delete</button>
+      </div>
+      </form>
+    </div>
+  </div>
 </div>
+  <td><a href="{% url "course_module_update" course.id %}">Edit modules</a></td>
+    {% if course.modules.count > 0 %}
+  <td> <a href="{% url "module_content_list" course.modules.first.id %}">
+    Manage contents</a></td>
+    {% endif %}
 {% empty %}
   <p>You haven't created any course yet.</p>
+   </tr>
 {% endfor %}
+</tbody>
+</table>
 </div>
-  <p><a href="{% url 'course_create' %}" class='button'>Create new course</a></p>
+ <p class="lead "><a class='text-dark' style="text-decoration:none;" href="#"  data-toggle="modal" data-target="#ModalExample2" class='button'>Create new course</a></p>
+</div>
+
+ <div id="ModalExample2" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-xs-center">{% if course  %}Edit Course {{ course.title}}{% else %}Create a new course{% endif %}</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" action="{% url 'course_create' %}" method="post" >
+                    <div class="form-group">
+                        <label class="control-label">Subject</label>
+                        <div>
+                             <select class="form-control" name="subject">
+                                {% for s in subjects %}
+                                <option value={{s.id}}>{{s}}</option>
+                                {% endfor %}
+                            </select> 
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Title</label>
+                        <div>
+                            <input type="text" class="form-control input-lg" name="title" value={{form.title}}>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Slug</label>
+                        <div>
+                            <input type="text" class="form-control input-lg" name="slug" value={{form.slug}}>
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label class="control-label">Overview</label>
+                        <div>
+                            <textarea class="form-control"  rows="5" name="overview" value={{form.overview}}></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                    {% csrf_token %}
+                            <button type="submit" class="btn btn-info btn-lbock">Save Course</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 {% endblock %}
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Type</th>
+      <th scope="col">Column heading</th>
+      <th scope="col">Column heading</th>
+      <th scope="col">Column heading</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-active">
+      <th scope="row">Active</th>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>
+    <tr>
+      <th scope="row">Default</th>
+      <td>Column content</td>
+      <td>Column content</td>
+      <td>Column content</td>
+    </tr>

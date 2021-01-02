@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load static %}
+
 {% block title %}
  {% if subject %}
         {{ subject.title }} courses
@@ -7,18 +9,22 @@
  {% endif %}
 {% endblock %}
  {% block content %}
- <div class="jumbotron" >
-   <h1 class="display-4">
+ <div class="container-fluid">
+  <center> <img class='img-fluid' src="{% static "css/facebook_cover_photo_2.png" %}" style="width:100%;" /></center>
+ </div>
+ <div class="jumbotron mt-3 ml-3 mr-3">
+ 
+   <h4 class="display-4" style="font-size:2rem;">
     {% if subject %}
     {{ subject.title }} courses
     {% else %}
     All courses
     {% endif %}
-    </h1>
- <div class="contents">
+    </h4>
+ <div >
     <h3 class='lead' style="font-weight:bold;">Subjects</h3>
             <div {% if not subject %}class="selected"{% endif %}>
-            <a href="{% url "course_list" %}">All</a>
+               <a href="{% url "course_list" %}">All</a>
             </div>
  <div class="row">
  {% for s in subjects %}
@@ -35,18 +41,19 @@
  <div class="container-fluid">
     {% for course in courses %}
     {% with subject=course.subject %}
- <h3> 
- <a href="{% url "course_detail" course.slug %}">
- {{ course.title }}
- </a>
- </h3>
- <p>
- <a href="{% url "course_list_subject" subject.slug %}">{{subject }}</a>.
- {{ course.total_modules }} modules.
- Instructor: {{ course.owner.get_full_name }}
- </p>
- {% endwith %}
- {% endfor %}
+   <h3> 
+   <a href="{% url "course_detail" course.slug %}">
+   {{ course.title }}
+   </a>
+   </h3>
+   <p>
+   <a href="{% url "course_list_subject" subject.slug %}">{{subject }}</a>.
+   {{ course.total_modules }} modules.
+   Instructor: {{ course.owner.get_full_name }}
+   </p>
+      {% endwith %}
+      {% endfor %}
+ </div>
  </div>
  </div>
 {% endblock %}

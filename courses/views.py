@@ -14,6 +14,7 @@ from django.views.generic.detail import DetailView
 from students.forms import CourseEnrollForm
 from django.core.cache import cache
 
+
 class OwnerMixin(object):
     def get_queryset(self):
         qs= super().get_queryset()
@@ -35,6 +36,11 @@ class OwnerCourseEditMixin(OwnerCourseMixin, OwnerEditMixin):
 class ManageCourseListView(OwnerCourseMixin, ListView):
     template_name='courses/manage/course/list.html'
     permission_required= 'courses.view_course'
+    def get_context_data(self, **kwargs):
+        s=Subject.objects.all()
+        context = super( ManageCourseListView, self).get_context_data(**kwargs)
+        context['subjects'] =s
+        return context
 
 class CourseCreateView(OwnerCourseEditMixin, CreateView):
     permission_required= 'courses.add_course'
@@ -61,6 +67,7 @@ class CourseModuleUpdateView(TemplateResponseMixin, View):
 
     def get(self, request, *args, **kwargs):
         formset=self.get_formset()
+        # formset.widget.attrs['class'] = 'form-control'
         return self.render_to_response({'course':self.course, 'formset':formset})
 
     def post(self, request, *args, **kwargs):
@@ -113,8 +120,8 @@ class ContentCreateUpdateView(TemplateResponseMixin, View):
 
 class ContentDeleteView(View):
 
-    def post(self, request):
-        content=get_object_or_404(Content, id=id, module_course_owner=request.user)
+    def post(self, request, id):
+        content=get_object_or_404(Content, id=id, module__course__owner=request.user)
 
         module=content.module
         content.item.delete()
