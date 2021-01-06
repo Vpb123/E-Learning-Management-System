@@ -137,7 +137,13 @@ CACHES={
         'LOCATION':'127.0.0.1:11211',
            }
 }
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'vishwajit20bhagat@gmail.com'
+EMAIL_HOST_PASSWORD = 'Shree@1234'
+EMAIL_PORT = 587
 # CACHE_MIDDLEWARE_ALIAS='default'
 # CACHE_MIDDLEWARE_SECONDS=60*15 
 # CACHE_MIDDLEWARE_KEY_PREFIX='educa'

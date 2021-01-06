@@ -1,6 +1,6 @@
 from .base import *
 
-DEBUG=False
+DEBUG=True
 ALLOWED_HOSTS = ['.educaproject.localhost']
 DATABASES={
     "default":{
