@@ -1,7 +1,7 @@
 from .base import *
 
 DEBUG=True
-ALLOWED_HOSTS = ['.educaproject.localhost']
+ALLOWED_HOSTS = ['.vbtohell.com']
 DATABASES={
     "default":{
         "ENGINE":'django.db.backends.sqlite3',
