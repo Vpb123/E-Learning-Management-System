@@ -1,0 +1,381 @@
+[
+{
+  "model": "courses.subject",
+  "pk": 1,
+  "fields": {
+    "title": "Mathematics",
+    "slug": "mathematics"
+  }
+},
+{
+  "model": "courses.subject",
+  "pk": 2,
+  "fields": {
+    "title": "Music",
+    "slug": "music"
+  }
+},
+{
+  "model": "courses.subject",
+  "pk": 3,
+  "fields": {
+    "title": "Physics",
+    "slug": "physics"
+  }
+},
+{
+  "model": "courses.subject",
+  "pk": 4,
+  "fields": {
+    "title": "Programming",
+    "slug": "programming"
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 4,
+  "fields": {
+    "owner": 1,
+    "subject": 3,
+    "title": "Relativity Theory",
+    "slug": "physics",
+    "overview": "The theory of relativity usually encompasses two interrelated theories by Albert Einstein: special relativity and general relativity. Special relativity applies to all physical phenomena in the absence of gravity. General relativity explains the law of gravitation and its relation to other forces of nature.It applies to the cosmological and astrophysical realm, including astronomy.",
+    "created": "2020-11-29T21:57:32.027Z",
+    "students": [
+      1,
+      5,
+      6,
+      32
+    ]
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 14,
+  "fields": {
+    "owner": 1,
+    "subject": 1,
+    "title": "Linear Algebra",
+    "slug": "linear_algebra",
+    "overview": "The linear algebra is an essential part of Mathematics of Machine learning.",
+    "created": "2021-01-02T06:43:35.429Z",
+    "students": [
+      1,
+      6,
+      32
+    ]
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 5,
+  "fields": {
+    "course": 4,
+    "title": "What is special relativity?",
+    "description": "E=mc^2",
+    "order": 1
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 6,
+  "fields": {
+    "course": 4,
+    "title": "What is general relativity?",
+    "description": "Essentially, it’s a theory of gravity. The basic idea is that instead of being an invisible force that attracts objects to one another, gravity is a curving or warping of space. The more massive an object, the more it warps the space around it.",
+    "order": 2
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 7,
+  "fields": {
+    "course": 4,
+    "title": "Introduction",
+    "description": "Who came up with the theory of relativity?",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 9,
+  "fields": {
+    "course": 14,
+    "title": "Linear Equations",
+    "description": "In mathematics, a linear equation is an equation that may be put in the form\r\n\r\n{\\displaystyle a_{1}x_{1}+\\cdots +a_{n}x_{n}+b=0,}{\\displaystyle a_{1}x_{1}+\\cdots +a_{n}x_{n}+b=0,}\r\nwhere {\\displaystyle x_{1},\\ldots ,x_{n}}x_{1},\\ldots ,x_{n} are the variables (or unknowns), and {\\displaystyle b,a_{1},\\ldots ,a_{n}}{\\displaystyle b,a_{1},\\ldots ,a_{n}} are the coefficients, which are often real numbers. The coefficients may be considered as parameters of the equation, and may be arbitrary expressions, provided they do not contain any of the variables. To yield a meaningful equation, the coefficients {\\displaystyle a_{1},\\ldots ,a_{n}}a_1, \\ldots, a_n are required to not all be zero.",
+    "order": 0
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 10,
+  "fields": {
+    "course": 14,
+    "title": "Matrices",
+    "description": "Matrices arose originally as a way to describe systems of linear equations, a type of problem familiar to anyone who took grade-school algebra. “Linear” just means that the variables in the equations don’t have any exponents, so their graphs will always be straight lines.",
+    "order": 1
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 11,
+  "fields": {
+    "course": 14,
+    "title": "Vector space",
+    "description": "A vector space (also called a linear space) is a set of objects called vectors, which may be added together and multiplied (\"scaled\") by numbers, called scalars. Scalars are often taken to be real numbers, but there are also vector spaces with scalar multiplication by complex numbers, rational numbers, or generally any field. The operations of vector addition and scalar multiplication must satisfy certain requirements, called vector axioms (listed below in § Definition). To specify that the scalars are real or complex numbers, the terms real vector space and complex vector space are often used.",
+    "order": 2
+  }
+},
+{
+  "model": "courses.content",
+  "pk": 1,
+  "fields": {
+    "module": 5,
+    "content_type": 10,
+    "object_id": 1,
+    "order": 0
+  }
+},
+{
+  "model": "courses.content",
+  "pk": 5,
+  "fields": {
+    "module": 7,
+    "content_type": 10,
+    "object_id": 2,
+    "order": 0
+  }
+},
+{
+  "model": "courses.content",
+  "pk": 6,
+  "fields": {
+    "module": 7,
+    "content_type": 12,
+    "object_id": 2,
+    "order": 1
+  }
+},
+{
+  "model": "courses.content",
+  "pk": 7,
+  "fields": {
+    "module": 7,
+    "content_type": 13,
+    "object_id": 2,
+    "order": 2
+  }
+},
+{
+  "model": "courses.content",
+  "pk": 9,
+  "fields": {
+    "module": 7,
+    "content_type": 12,
+    "object_id": 3,
+    "order": 4
+  }
+},
+{
+  "model": "courses.content",
+  "pk": 10,
+  "fields": {
+    "module": 5,
+    "content_type": 12,
+    "object_id": 4,
+    "order": 1
+  }
+},
+{
+  "model": "courses.content",
+  "pk": 11,
+  "fields": {
+    "module": 5,
+    "content_type": 12,
+    "object_id": 5,
+    "order": 2
+  }
+},
+{
+  "model": "courses.content",
+  "pk": 12,
+  "fields": {
+    "module": 5,
+    "content_type": 13,
+    "object_id": 3,
+    "order": 3
+  }
+},
+{
+  "model": "courses.content",
+  "pk": 13,
+  "fields": {
+    "module": 5,
+    "content_type": 13,
+    "object_id": 4,
+    "order": 4
+  }
+},
+{
+  "model": "courses.content",
+  "pk": 14,
+  "fields": {
+    "module": 9,
+    "content_type": 10,
+    "object_id": 3,
+    "order": 0
+  }
+},
+{
+  "model": "courses.content",
+  "pk": 15,
+  "fields": {
+    "module": 9,
+    "content_type": 12,
+    "object_id": 6,
+    "order": 1
+  }
+},
+{
+  "model": "courses.content",
+  "pk": 16,
+  "fields": {
+    "module": 9,
+    "content_type": 13,
+    "object_id": 5,
+    "order": 2
+  }
+},
+{
+  "model": "courses.text",
+  "pk": 1,
+  "fields": {
+    "owner": 1,
+    "title": "What is special relativity?",
+    "created": "2020-11-29T22:25:30.268Z",
+    "updated": "2020-11-29T22:25:30.268Z",
+    "content": "The theory is based on two key concepts.\r\n\r\nFirst, the natural world allows no “privileged” frames of reference. As long as an object is moving in a straight line at a constant speed (that is, with no acceleration), the laws of physics are the same for everyone. It’s a bit like when you look out a train window and see an adjacent train appear to move — but is it moving, or are you? It can be hard to tell. Einstein recognized that if the motion is perfectly uniform, it's literally impossible to tell — and identified this as a central principle of physics.\r\nSecond, light travels at an unvarying speed of 186,000 miles a second. No matter how fast an observer is moving or how fast a light-emitting object is moving, a measurement of the speed of light always yields the same result."
+  }
+},
+{
+  "model": "courses.text",
+  "pk": 2,
+  "fields": {
+    "owner": 1,
+    "title": "Who came up with the theory of relativity?",
+    "created": "2020-12-03T00:50:19.304Z",
+    "updated": "2020-12-03T00:50:19.304Z",
+    "content": "Albert Einstein. He published the first part of his theory — special relativity — in the German physics journal Annalen der Physik in 1905 and completed his theory of general relativity only after another decade of difficult work. He presented the latter theory in a series of lectures in Berlin in late 1915 and published in the Annalen in 1916."
+  }
+},
+{
+  "model": "courses.text",
+  "pk": 3,
+  "fields": {
+    "owner": 1,
+    "title": "System of linear Equations",
+    "created": "2021-01-02T06:50:39.394Z",
+    "updated": "2021-01-02T06:50:39.394Z",
+    "content": "In mathematics, the theory of linear systems is the basis and a fundamental part of linear algebra, a subject which is used in most parts of modern mathematics. Computational algorithms for finding the solutions are an important part of numerical linear algebra, and play a prominent role in engineering, physics, chemistry, computer science, and economics. A system of non-linear equations can often be approximated by a linear system (see linearization), a helpful technique when making a mathematical model or computer simulation of a relatively complex system."
+  }
+},
+{
+  "model": "courses.image",
+  "pk": 2,
+  "fields": {
+    "owner": 1,
+    "title": "Albert Einstein",
+    "created": "2020-12-03T00:51:13.137Z",
+    "updated": "2020-12-03T00:51:13.137Z",
+    "file": "images/albert.jpg"
+  }
+},
+{
+  "model": "courses.image",
+  "pk": 3,
+  "fields": {
+    "owner": 1,
+    "title": "Albert Studying",
+    "created": "2021-01-01T23:29:53.386Z",
+    "updated": "2021-01-01T23:29:53.386Z",
+    "file": "images/albert2.jpg"
+  }
+},
+{
+  "model": "courses.image",
+  "pk": 4,
+  "fields": {
+    "owner": 1,
+    "title": "special relativity 1",
+    "created": "2021-01-02T00:18:20.299Z",
+    "updated": "2021-01-02T00:18:20.299Z",
+    "file": "images/special-rel.png"
+  }
+},
+{
+  "model": "courses.image",
+  "pk": 5,
+  "fields": {
+    "owner": 1,
+    "title": "special relativity2",
+    "created": "2021-01-02T00:18:45.220Z",
+    "updated": "2021-01-02T00:18:45.220Z",
+    "file": "images/special2.jfif"
+  }
+},
+{
+  "model": "courses.image",
+  "pk": 6,
+  "fields": {
+    "owner": 1,
+    "title": "A linear system in three variables",
+    "created": "2021-01-02T06:51:58.495Z",
+    "updated": "2021-01-02T06:51:58.495Z",
+    "file": "images/linear.png"
+  }
+},
+{
+  "model": "courses.video",
+  "pk": 2,
+  "fields": {
+    "owner": 1,
+    "title": "Albert Einstein Einstein the Mad Scientist",
+    "created": "2020-12-03T00:52:34.962Z",
+    "updated": "2020-12-03T00:52:34.962Z",
+    "url": "https://www.youtube.com/watch?v=40yqDWiEr_g"
+  }
+},
+{
+  "model": "courses.video",
+  "pk": 3,
+  "fields": {
+    "owner": 1,
+    "title": "A visualization of special relativity",
+    "created": "2021-01-02T00:20:31.683Z",
+    "updated": "2021-01-02T00:20:31.683Z",
+    "url": "https://youtu.be/EI2OPCdGXkw"
+  }
+},
+{
+  "model": "courses.video",
+  "pk": 4,
+  "fields": {
+    "owner": 1,
+    "title": "Theory of SPECIAL RELATIVITY - Basics",
+    "created": "2021-01-02T00:21:25.045Z",
+    "updated": "2021-01-02T00:21:25.045Z",
+    "url": "https://youtu.be/zADj0k0waFY"
+  }
+},
+{
+  "model": "courses.video",
+  "pk": 5,
+  "fields": {
+    "owner": 1,
+    "title": "System of linear Equations(part1)",
+    "created": "2021-01-02T06:53:31.770Z",
+    "updated": "2021-01-02T06:53:31.770Z",
+    "url": "https://youtu.be/NNmiOoWt86M"
+  }
+}
+]

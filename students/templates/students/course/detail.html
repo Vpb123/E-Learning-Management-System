@@ -25,13 +25,10 @@
 
 {% block content %}
 
-<div class='container-fluid'><h4 class="text-secondary" style="margin-top:10px;">{{object.subject}} Course :  {{object.title}}</h4></div>
- <div class="container-fluid">
- <div class="row">
- <div class="col-lg-4 col-md-4" style="margin-top:30px;">
- <div class="list-group">
-{% for m in object.modules.all %}
-<a data-id="{{ m.id }}" {% if m == module %}class="list-group-item list-group-item-action active"{% else %}class="list-group-item list-group-item-action"{% endif %} href="{% url "student_course_detail_module" object.id m.id %}" >
+<div class='container-fluid'>
+ <div class="sidebar" >
+{% for m in object.modules.all %}<li>
+<a data-id="{{ m.id }}" {% if m == module %}class=""{% else %}class=""{% endif %} href="{% url "student_course_detail_module" object.id m.id %}" >
     <span>Module <span class="order">{{ m.order|add:1 }}</span></span>
  {{ m.title }}
  </a></li>
@@ -39,10 +36,10 @@
  <li>No modules yet.</li>
  {% endfor %}
 </div>
- </div>
 
-<div class="col-lg-8 col-md-8 "style="margin-top:30px;">
-<div class="card   mb-3" >
+<div class="content"style="margin-top:5px;">
+<div class='container-fluid'><h4 class="text-secondary" style="margin-top:10px;">{{object.subject}} Course :  {{object.title}}</h4></div>
+<div class="card mb-3">
  {% cache 600 module_contents module%}
  <div class='card-body'>
  <div class ="row">

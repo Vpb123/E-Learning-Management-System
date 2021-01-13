@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'embed_video',
     'rest_framework',
     'chat',
+    'social_django',
     
 ]
 
@@ -164,3 +165,19 @@ REST_FRAMEWORK={
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
+
+AUTHENTICATION_BACKENDS={
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+}
+
+SOCIAL_AUTH_FACEBOOK_KEY = 441266460569758 # Facebook App ID
+SOCIAL_AUTH_FACEBOOK_SECRET ='497eab6202b1f794c2139882ff203584'
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']# Facebook App Secret
+SOCIAL_AUTH_GITHUB_KEY = '29603e84f31ad595bc0b'
+SOCIAL_AUTH_GITHUB_SECRET = '815a94472abca03425fb0766ffabfe8bb529ad0e'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '591170064727-oktm038vh165u2tf6tsupm793l71as2s.apps.googleusercontent.com' # Google Consumer Key
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET ='Ck20Td8HANLgFNPCPNx69ofN'

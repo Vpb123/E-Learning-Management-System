@@ -28,7 +28,7 @@ urlpatterns = [
     path('students/', include('students.urls')),
     path('api/', include('courses.api.urls', namespace='api')),
     path('chat/',include("chat.urls",namespace='chat')),
-
+    path('social-auth/',include('social_django.urls', namespace='social')),
 ]
 
 if settings.DEBUG:

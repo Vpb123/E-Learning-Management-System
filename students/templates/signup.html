@@ -1,20 +1,69 @@
 {% extends "base.html" %}
 {% block content %}
-  <h2>Sign up</h2>
-  <form method="post">
+  
+  <div class="signup-form container-fluid">
+    <form action="{% url 'student_registration' %}" method="post">
     {% csrf_token %}
-      {% for field in form %}
-      <p>
-        {{ field.label_tag }}<br>
-        {{ field }}
-        {% if field.help_text %}
-          <small style="display: none">{{ field.help_text }}</small>
-        {% endif %}
-        {% for error in field.errors %}
-          <p style="color: red">{{ error }}</p>
-        {% endfor %}
-      </p>
-      {% endfor %}
-    <button type="submit">Sign up</button>
-  </form>
+		<h2>Sign Up</h2>
+		<p>Please fill in this form to create an account!</p>
+		<hr>
+        <div class="form-group">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<span class="fa fa-user"></span>
+					</span>                    
+				</div>
+				<input type="text" class="form-control" name="username" placeholder="Username" required="required">
+			</div>
+        </div>
+        <div class="form-group">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<i class="fa fa-paper-plane"></i>
+					</span>                    
+				</div>
+				<input type="email" class="form-control" name="email" placeholder="Email Address" required="required">
+			</div>
+        </div>
+		<div class="form-group">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<i class="fa fa-lock"></i>
+					</span>                    
+				</div>
+				<input type="password" class="form-control" name="password1" placeholder="Password" required="required">
+			</div>
+        </div>
+		<div class="form-group">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text">
+						<i class="fa fa-lock"><i class="fa fa-check" style="margin:12px;margin-top:7px;"></i></i>
+					
+					</span>                    
+				</div>
+				<input type="password" class="form-control" name="password2" placeholder="Confirm Password" required="required">
+			</div>
+        </div>
+        <div class="form-group">
+			<label class="form-check-label"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
+		</div>
+		<div class="form-group">
+            <button type="submit" class="btn btn-primary" style="border-radius:50px;">Sign Up</button>
+        </div>
+    </form>
+	<div class="text-center">Already have an account? <a href="#" style="color:blue;">Login here</a></div>
+</div>
+<div>
+<h4 class="display-3" style="text-align:center;margin:10px;font-size:15px;">OR Signup with</h4>
+<center >
+<a style="padding:5px;" href="{% url "social:begin" "facebook" %}" ><i class="fab fa-facebook fa-3x"></i></a>
+<a style="padding:5px;" href="{% url 'social:begin' 'github' %}"><i class="fab fa-github fa-3x"></i></a>
+ <a style='padding:5px;'href="{% url "social:begin" "google-oauth2" %}"><i class="fab fa-google fa-3x"></i></a>
+</center>
+</div>
 {% endblock %}
+
